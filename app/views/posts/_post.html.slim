@@ -1,0 +1,18 @@
+div id="#{dom_id(post)}" class="rounded overflow-hidden shadow-lg bg-white m-3 #{action_name == "index" ? "max-w-sm" : ''}"
+  - if action_name == "index"
+    .px-6.py-4
+      .font-bold.text-xl.mb-2= post.title.truncate(30)
+      p.text-gray-700.text-base= post.content.html_safe[0..100] + '..'
+  - else
+    .px-6.py-4
+      p.font-bold.text-xl.mb-2= post.title
+      p.text-gray-700.text-base.mb-2= post.content.html_safe
+      hr
+      p.mt-2
+        | Posted On #{post.created_at.strftime("%B %e, %Y")} By #{post.user.email}
+  - if action_name != "show"
+    .px-6.py-4.flex
+      = link_to "Show this post", post, class: "rounded-lg bg-blue-500 text-white py-3 px-5 inline-block font-medium"
+      - if current_user && post.owned_by?(current_user)
+        = link_to "Edit", edit_post_path(post), class: "rounded-lg bg-green-500 text-white py-3 ml-2 px-5 bg-gray-100 inline-block font-medium"
+        = button_to "Delete", post_path(post), method: :delete, data: { confirm: "Are you sure?" }, class: "rounded-lg bg-red-400 text-white py-3 ml-2 px-5 bg-gray-100 inline-block font-medium"

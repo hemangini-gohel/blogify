@@ -1,0 +1,9 @@
+div id="#{dom_id(comment)}" class="my-5 items-center"
+  .flex
+    .flex-1
+      span.p-3.bg-gray-100.rounded-md.block= comment.content
+    .ml-3
+      - if comment.owned_by?(current_user)
+        = button_to "Delete", post_comment_path(comment.post, comment), method: :delete, data: { confirm: "Are you sure?" }, class: "bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-md"
+  small
+    | by #{comment.user.email} on #{comment.created_at.strftime("%B %e, %Y")}

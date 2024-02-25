@@ -1,0 +1,14 @@
+.w-full
+  - if notice.present?
+    p.py-2.px-3.bg-green-50.mb-5.text-green-500.font-medium.rounded-lg.inline-block#notice= notice
+
+  .flex.justify-between.m-5
+    h1.font-bold.text-4xl.text-center Posts
+    = link_to "New post", new_post_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium"
+
+  #posts.min-w-full.flex.m-5.mt-10
+    == render @posts
+    br
+
+  .text-center
+    == will_paginate @posts
