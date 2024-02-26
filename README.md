@@ -6,6 +6,7 @@ git clone https://github.com/hemangini-gohel/blogify.git
 cd blogify
 bundle install
 rails db:setup
+rails assets:precompile
 rails s
 ```
 
