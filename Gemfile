@@ -56,6 +56,7 @@ gem 'will_paginate', '~> 3.3'
 gem 'ckeditor'
 gem 'rspec-rails'
 gem "slim-rails"
+gem 'shoulda-matchers'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
